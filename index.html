@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成雅工业园区 · 招商简介</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --c1: #1b3a5c; --c2: #2a6496; --c3: #3a8fd4;
+            --gold: #c8964e; --gold-light: #f5e6cc;
+            --bg: #fafbfc; --bg2: #f0f3f7;
+            --txt: #3d4f5f; --txt2: #6b7d8e; --txt3: #94a3b2;
+            --card: #fff; --border: #e8ecf1;
+            --r: 18px; --shadow: 0 4px 24px rgba(27,58,92,0.07);
+        }
+        body {
+            font-family: "PingFang SC","Microsoft YaHei","Helvetica Neue",sans-serif;
+            color: var(--txt); line-height: 1.85; background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+            scroll-padding-top: 52px;
+        }
+
+        /* ===== Top Nav ===== */
+        .topnav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(14,36,64,0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            transform: translateY(-100%); transition: transform .35s;
+        }
+        .topnav.show { transform: translateY(0); }
+        .topnav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; gap: 0;
+            padding: 0 16px; overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .topnav-inner::-webkit-scrollbar { display: none; }
+        .topnav-brand {
+            font-size: 14px; font-weight: 700; color: var(--gold);
+            letter-spacing: 2px; white-space: nowrap;
+            padding: 12px 16px 12px 8px; flex-shrink: 0;
+        }
+        .topnav a:not(.topnav-brand) {
+            display: block; padding: 12px 14px;
+            font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none;
+            white-space: nowrap; transition: color .2s; position: relative;
+            flex-shrink: 0;
+        }
+        .topnav a:not(.topnav-brand):hover { color: #fff; }
+        .topnav a:not(.topnav-brand).active {
+            color: #fff; font-weight: 600;
+        }
+        .topnav a:not(.topnav-brand).active::after {
+            content:''; position: absolute; bottom: 0; left: 14px; right: 14px;
+            height: 2px; background: var(--gold); border-radius: 2px 2px 0 0;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative; min-height: 480px; padding: 80px 24px 100px;
+            background: linear-gradient(160deg,#0e2440 0%,#1b3a5c 35%,#2a6496 70%,#3a8fd4 100%);
+            text-align: center; overflow: hidden;
+        }
+        .hero::before {
+            content:''; position:absolute; inset:0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.06)'/%3E%3C/svg%3E") repeat;
+        }
+        .hero::after {
+            content:''; position:absolute; bottom:-2px; left:0; right:0; height:80px;
+            background: linear-gradient(to top, var(--bg), transparent);
+        }
+        .hero-inner { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+        .hero-badge {
+            display:inline-block; background:rgba(200,150,78,0.2); border:1px solid rgba(200,150,78,0.4);
+            color:var(--gold-light); padding:5px 22px; border-radius:30px; font-size:13px;
+            letter-spacing:5px; margin-bottom:28px;
+        }
+        .hero h1 { color:#fff; font-size:46px; font-weight:800; letter-spacing:8px; margin-bottom:8px; }
+        .hero .sub { color:rgba(255,255,255,0.5); font-size:16px; letter-spacing:10px; margin-bottom:32px; }
+        .hero .line { width:48px; height:2px; background:var(--gold); margin:0 auto 28px; border-radius:2px; }
+        .hero .tagline { color:rgba(255,255,255,0.75); font-size:15px; letter-spacing:2px; line-height:1.8; }
+
+        /* ===== Stats Bar ===== */
+        .stats {
+            position:relative; z-index:5; max-width:1060px; margin:-56px auto 0;
+            display:grid; grid-template-columns:repeat(4, 1fr);
+            background:var(--card); border-radius:var(--r); box-shadow:var(--shadow);
+            overflow:hidden; width:100%;
+        }
+        .stat { text-align:center; padding:28px 12px; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; min-width:0; }
+        .stat:not(:last-child)::after {
+            content:''; position:absolute; right:0; top:20%; height:60%; width:1px; background:var(--border);
+        }
+        .stat .num { font-size:36px; font-weight:800; color:var(--c1); line-height:1; white-space:nowrap; }
+        .stat .num small { font-size:16px; font-weight:400; color:var(--txt2); }
+        .stat .label { font-size:13px; color:var(--txt3); letter-spacing:2px; margin-top:8px; }
+        .stat .sub-label { font-size:11px; color:var(--gold); margin-top:4px; letter-spacing:1px; }
+
+        /* ===== Container & Section ===== */
+        .wrap { max-width:1060px; margin:0 auto; padding:72px 28px; }
+        .sec-title { text-align:center; margin-bottom:48px; }
+        .sec-title h3 { font-size:28px; font-weight:700; color:var(--c1); letter-spacing:3px; }
+        .sec-title .en { font-size:12px; color:var(--txt3); letter-spacing:4px; margin-top:6px; text-transform:uppercase; }
+        .sec-title .bar { width:40px; height:2px; background:var(--gold); margin:14px auto 0; border-radius:2px; }
+
+        /* ===== Prose ===== */
+        .prose { font-size:15px; line-height:2; max-width:820px; margin:0 auto; color:var(--txt); }
+        .prose p { margin-bottom:16px; text-indent:2em; }
+
+        /* ===== Overview Visual ===== */
+        .overview-layout { display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start; }
+        .overview-text { font-size:14.5px; line-height:2; color:var(--txt); }
+        .overview-text p { margin-bottom:14px; text-indent:2em; }
+        .overview-highlights {
+            display:grid; grid-template-columns:1fr 1fr; gap:14px;
+        }
+        .ov-card {
+            background:var(--bg2); border-radius:14px; padding:20px 18px; text-align:center;
+            border:1px solid var(--border); transition:all .3s;
+        }
+        .ov-card:hover { border-color:var(--c3); transform:translateY(-2px); }
+        .ov-card .ov-num { font-size:26px; font-weight:800; color:var(--c1); line-height:1.1; }
+        .ov-card .ov-num small { font-size:13px; font-weight:400; color:var(--txt2); }
+        .ov-card .ov-label { font-size:12px; color:var(--txt3); margin-top:6px; letter-spacing:1px; }
+        .ov-card .ov-sub { font-size:11px; color:var(--gold); margin-top:3px; }
+
+        /* ===== Feature Cards ===== */
+        .feat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+        .feat {
+            background:var(--card); border-radius:var(--r); padding:36px 28px;
+            border:1px solid var(--border); transition:all .3s;
+        }
+        .feat:hover { border-color:var(--c3); box-shadow:0 8px 32px rgba(27,58,92,0.1); transform:translateY(-4px); }
+        .feat-icon {
+            width:48px; height:48px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+            font-size:22px; margin-bottom:18px;
+            background:linear-gradient(135deg, var(--c1), var(--c2)); color:#fff;
+        }
+        .feat h4 { font-size:17px; color:var(--c1); margin-bottom:10px; letter-spacing:1px; }
+        .feat p { font-size:13.5px; color:var(--txt2); line-height:1.85; }
+
+        /* ===== Cost Cards ===== */
+        .cost-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .cost {
+            background:var(--card); border-radius:var(--r); padding:28px 24px; text-align:center;
+            border:1px solid var(--border); transition:all .3s;
+            display:flex; flex-direction:column; align-items:center;
+        }
+        .cost:hover { border-color:var(--gold); box-shadow:0 6px 24px rgba(200,150,78,0.12); }
+        .cost h5 { font-size:14px; color:var(--c1); letter-spacing:1px; margin-bottom:8px; min-height:20px; }
+        .cost .price { font-size:28px; font-weight:800; color:var(--c1); margin-bottom:4px; min-height:36px; display:flex; align-items:baseline; justify-content:center; }
+        .cost .price small { font-size:13px; font-weight:400; color:var(--txt2); }
+        .cost .desc { font-size:12.5px; color:var(--txt3); line-height:1.7; margin:10px 0; flex:1; }
+        .cost .tag {
+            display:inline-block; background:var(--gold-light); color:var(--gold);
+            padding:3px 12px; border-radius:20px; font-size:11px; font-weight:600;
+            margin-top:auto;
+        }
+
+        /* ===== Geo Banner ===== */
+        .geo {
+            background:linear-gradient(135deg,#0e2440,#1b3a5c 60%,#2a6496);
+            border-radius:var(--r); padding:48px; color:#fff;
+            display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;
+        }
+        .geo h4 { font-size:22px; color:var(--gold); margin-bottom:14px; letter-spacing:2px; }
+        .geo p { font-size:14px; line-height:2; color:rgba(255,255,255,0.82); }
+        .geo p + p { margin-top:12px; }
+        .geo-tags { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .geo-tag {
+            background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
+            border-radius:14px; padding:18px 16px; text-align:center; transition:background .3s;
+        }
+        .geo-tag:hover { background:rgba(255,255,255,0.14); }
+        .geo-tag .ico { font-size:24px; margin-bottom:6px; }
+        .geo-tag h6 { font-size:13px; color:var(--gold); margin-bottom:4px; }
+        .geo-tag p { font-size:11.5px; color:rgba(255,255,255,0.6); line-height:1.6; }
+
+        /* ===== Industry ===== */
+        .ind-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .ind {
+            background:var(--card); border-radius:var(--r); padding:28px 28px 28px 32px;
+            border:1px solid var(--border); border-left:4px solid var(--c2);
+            display:flex; gap:18px; align-items:flex-start; transition:border-color .3s;
+        }
+        .ind:hover { border-left-color:var(--gold); }
+        .ind-n { font-size:32px; font-weight:800; color:rgba(27,58,92,0.08); line-height:1; min-width:40px; }
+        .ind h4 { font-size:16px; color:var(--c1); margin-bottom:6px; }
+        .ind p { font-size:13px; color:var(--txt2); line-height:1.8; }
+
+        /* ===== Policy Stack ===== */
+        .stack { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:36px; }
+        .stack-tag {
+            display:inline-flex; align-items:center; gap:6px;
+            background:var(--card); border:1.5px solid var(--c2); color:var(--c2);
+            padding:8px 18px; border-radius:24px; font-size:13px; font-weight:500;
+            letter-spacing:0.5px; transition:all .3s;
+        }
+        .stack-tag:hover { background:var(--c1); color:#fff; border-color:var(--c1); }
+        .stack-tag::before { content:''; width:6px; height:6px; background:var(--gold); border-radius:50%; }
+
+        /* ===== Policy Table ===== */
+        .ptbl-wrap { border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow); }
+        .ptbl { width:100%; border-collapse:collapse; background:var(--card); font-size:13.5px; }
+        .ptbl thead { background:linear-gradient(135deg,var(--c1),var(--c2)); color:#fff; }
+        .ptbl th { padding:14px 22px; text-align:left; font-weight:500; font-size:13px; letter-spacing:1px; }
+        .ptbl td { padding:14px 22px; border-bottom:1px solid var(--border); line-height:1.7; }
+        .ptbl tbody tr:hover { background:var(--bg2); }
+        .ptbl .ptag {
+            display:inline-block; background:rgba(27,58,92,0.06); color:var(--c1);
+            padding:2px 10px; border-radius:16px; font-size:11px; font-weight:500;
+        }
+
+        /* ===== Enterprise List ===== */
+        .ent-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 36px; align-items:start; }
+        .ent-col { min-width:0; }
+        .ent-group { margin-bottom:20px; }
+        .ent-group-title {
+            font-size:13px; font-weight:600; color:var(--c2); letter-spacing:2px;
+            padding-bottom:8px; margin-bottom:12px; border-bottom:2px solid var(--bg2);
+        }
+        .ent-item {
+            display:flex; align-items:center; gap:10px;
+            padding:10px 14px; border-radius:10px; transition:background .2s;
+        }
+        .ent-item:hover { background:var(--bg2); }
+        .ent-dot { width:8px; height:8px; min-width:8px; border-radius:50%; background:var(--gold); }
+        .ent-name { font-size:14px; color:var(--txt); font-weight:500; }
+        .ent-biz { font-size:12px; color:var(--txt3); margin-left:auto; white-space:nowrap; }
+
+        /* ===== Transport Images ===== */
+        .transport-imgs { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px; }
+        .transport-img-item { display:flex; flex-direction:column; }
+        .transport-img-item img {
+            width:100%; height:480px; object-fit:contain;
+        }
+        .transport-img-item .img-caption {
+            text-align:center; font-size:12px; color:var(--txt3); margin-top:10px; letter-spacing:1px;
+        }
+
+        /* ===== News ===== */
+        .news-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+        .news {
+            background:var(--card); border-radius:var(--r); overflow:hidden;
+            border:1px solid var(--border); transition:all .3s;
+            display:flex; flex-direction:column;
+        }
+        .news:hover { border-color:var(--c3); box-shadow:0 8px 28px rgba(27,58,92,0.1); transform:translateY(-3px); }
+        .news-img {
+            height:180px; background:linear-gradient(135deg,#dfe6ed,#c8d6e5); overflow:hidden;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .news-img img { width:100%; height:100%; object-fit:cover; }
+        .news-img .ph { text-align:center; color:#8899aa; }
+        .news-img .ph .pi { font-size:36px; display:block; margin-bottom:4px; }
+        .news-img .ph span { font-size:11px; letter-spacing:1px; }
+        .news-body { padding:22px 24px; flex:1; display:flex; flex-direction:column; }
+        .news-date {
+            display:inline-block; background:rgba(27,58,92,0.06); color:var(--c1);
+            padding:2px 10px; border-radius:16px; font-size:11px; font-weight:500;
+            align-self:flex-start; margin-bottom:10px;
+        }
+        .news-body h4 { font-size:14.5px; color:var(--c1); line-height:1.65; margin-bottom:8px;
+            display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+        .news-body p { font-size:12.5px; color:var(--txt3); line-height:1.7; flex:1;
+            display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+        .news-link {
+            display:inline-flex; align-items:center; gap:4px; margin-top:14px;
+            color:var(--c3); font-size:12.5px; font-weight:500; text-decoration:none;
+        }
+        .news-link:hover { color:var(--c1); }
+
+        /* ===== CTA ===== */
+        .cta {
+            background:linear-gradient(160deg,#0e2440,#1b3a5c 50%,#2a6496);
+            text-align:center; padding:72px 28px; position:relative;
+        }
+        .cta::before {
+            content:''; position:absolute; inset:0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E") repeat;
+        }
+        .cta-inner { position:relative; z-index:2; }
+        .cta h3 { color:#fff; font-size:28px; letter-spacing:4px; margin-bottom:10px; }
+        .cta .sub2 { color:rgba(255,255,255,0.55); font-size:14px; margin-bottom:36px; }
+        .cta-box {
+            display:inline-grid; grid-template-columns:auto auto; gap:14px 36px; text-align:left;
+            background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+            border-radius:var(--r); padding:32px 44px;
+        }
+        .cta-l { color:var(--gold); font-size:12px; letter-spacing:2px; align-self:center; }
+        .cta-v { color:#fff; font-size:15px; font-weight:500; }
+        .cta-map {
+            display:inline-block; margin-top:28px;
+            background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.18);
+            color:#fff; padding:12px 32px; border-radius:30px;
+            text-decoration:none; font-size:14px; letter-spacing:1px;
+            transition:background .3s;
+        }
+        .cta-map:hover { background:rgba(255,255,255,0.22); }
+
+        /* ===== Footer ===== */
+        footer { text-align:center; padding:24px 20px; background:#0c1e30; color:rgba(255,255,255,0.28); font-size:12px; letter-spacing:1px; line-height:1.8; }
+
+        /* ===== Responsive ===== */
+        @media(max-width:900px){
+            .hero h1{font-size:30px;letter-spacing:4px}
+            .hero .sub{font-size:13px;letter-spacing:6px}
+            .stats{grid-template-columns:repeat(2,1fr)}
+            .stat:nth-child(2)::after{display:none}
+            .feat-grid,.cost-grid,.news-grid{grid-template-columns:1fr}
+            .ind-grid{grid-template-columns:1fr}
+            .ent-grid{grid-template-columns:1fr}
+            .geo{grid-template-columns:1fr;padding:28px}
+            .transport-imgs{grid-template-columns:1fr}
+            .overview-layout{grid-template-columns:1fr}
+            .cta-box{grid-template-columns:1fr}
+            .topnav a:not(.topnav-brand){padding:10px 10px;font-size:12px}
+            .topnav-brand{font-size:12px;padding:10px 10px 10px 6px}
+        }
+
+        /* ===== Print ===== */
+        @media print{
+            @page{size:A4;margin:12mm 8mm}
+            *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+            body{font-size:11px;line-height:1.5}
+            .hero{min-height:auto;padding:28px}
+            .hero h1{font-size:26px}
+            .stats{margin-top:-20px;box-shadow:none;border:1px solid #ddd}
+            .feat,.cost,.ind,.news,.ent-item{box-shadow:none;border:1px solid #ddd}
+            .feat:hover,.cost:hover,.news:hover{transform:none}
+            .news-img{height:120px}
+            .geo{grid-template-columns:1fr}
+            .overview-layout{grid-template-columns:1fr}
+            .wrap{padding:36px 16px}
+            .sec-title{margin-bottom:24px}
+            .feat,.cost,.ind,.news,.stat,.geo,.ptbl-wrap,.transport-imgs{break-inside:avoid;page-break-inside:avoid}
+            .topnav{display:none}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== Top Navigation ===== -->
+<nav class="topnav" id="topnav">
+    <div class="topnav-inner">
+        <span class="topnav-brand">成雅工业园</span>
+        <a href="#s-overview">园区概览</a>
+        <a href="#s-advantages">核心优势</a>
+        <a href="#s-cost">成本参考</a>
+        <a href="#s-transport">交通区位</a>
+        <a href="#s-geography">战略地理</a>
+        <a href="#s-industry">主导产业</a>
+        <a href="#s-policy">政策服务</a>
+        <a href="#s-enterprise">入驻企业</a>
+        <a href="#s-news">领导关怀</a>
+        <a href="#s-contact">联系我们</a>
+    </div>
+</nav>
+
+<!-- ==================== Hero ==================== -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">省级工业园区 · 营收突破百亿</div>
+        <h1>成雅工业园区</h1>
+        <p class="sub">CHENGYA INDUSTRIAL PARK</p>
+        <div class="line"></div>
+        <p class="tagline">成都 · 雅安 双城共建<br>融入成都一小时经济圈 · 川西综合交通枢纽</p>
+    </div>
+</section>
+
+<!-- ==================== Stats ==================== -->
+<div class="stats">
+    <div class="stat"><div class="num">5.04<small> km²</small></div><div class="label">城镇开发边界</div><div class="sub-label">已开发 2.68 km²</div></div>
+    <div class="stat"><div class="num">181<small> 家</small></div><div class="label">入驻企业</div><div class="sub-label">四上企业 40 家</div></div>
+    <div class="stat"><div class="num">131.16<small> 亿元</small></div><div class="label">2025年营业收入</div><div class="sub-label">首次突破百亿</div></div>
+    <div class="stat"><div class="num">5.35<small> 亿元</small></div><div class="label">2025年税收</div><div class="sub-label">亩均排名全省第51位</div></div>
+</div>
+
+<!-- ==================== 园区概览 ==================== -->
+<div class="wrap" id="s-overview">
+    <div class="sec-title">
+        <h3>园区概览</h3>
+        <div class="en">PARK OVERVIEW</div>
+        <div class="bar"></div>
+    </div>
+    <div class="overview-layout">
+        <div class="overview-text">
+            <p>成雅工业园区由成都市人民政府与雅安市人民政府于2011年3月合作共建，2012年启动建设，2013年1月获市政府批复成立，2019年1月经省政府批复升级为省级工业园区，核准面积1.96平方公里（2940亩）。根据国土空间总体规划，园区城镇开发边界面积5.04平方公里，位于雅安市名山区境内，系雅安建设川藏经济协作先行区及甘雅工业园区起步区，目前已完成开发面积2.68平方公里。</p>
+            <p>园区入驻企业181家，2025年度实现营业收入131.16亿元，首次突破百亿大关，实现税收5.35亿元。在四川省级及以上开发区"亩均论英雄"调查评价中，排名由2019年的第97名提升至2024年的第51名。现有"四上"规模企业40家，其中规上工业企业23家、限上服务业企业17家；高新技术企业8家，专精特新企业5家，省级企业技术中心2个，全省100强制造业企业1家。</p>
+        </div>
+        <div class="overview-highlights">
+            <div class="ov-card"><div class="ov-num">2011<small>年</small></div><div class="ov-label">成雅两市合作共建</div></div>
+            <div class="ov-card"><div class="ov-num">1.96<small> km²</small></div><div class="ov-label">核准面积</div><div class="ov-sub">开发边界 5.04 km²</div></div>
+            <div class="ov-card"><div class="ov-num">8<small> 家</small></div><div class="ov-label">高新技术企业</div><div class="ov-sub">专精特新 5 家</div></div>
+            <div class="ov-card"><div class="ov-num">第51<small> 名</small></div><div class="ov-label">亩均排名全省</div><div class="ov-sub">较2019年提升46位</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 核心优势 ==================== -->
+<div style="background:var(--bg2)" id="s-advantages">
+<div class="wrap">
+    <div class="sec-title">
+        <h3>核心优势</h3>
+        <div class="en">CORE ADVANTAGES</div>
+        <div class="bar"></div>
+    </div>
+    <div class="feat-grid">
+        <div class="feat">
+            <div class="feat-icon">📍</div>
+            <h4>黄金区位</h4>
+            <p>地处成都与雅安之间的黄金走廊，北距成都90公里，南距雅安市区30公里，处于成都一小时经济圈内，是雅安融入成都经济圈的"桥头堡"，承接产业转移优势显著。</p>
+        </div>
+        <div class="feat">
+            <div class="feat-icon">⚡</div>
+            <h4>要素保障有力</h4>
+            <p>现有110KV和220KV变电站各1座，电力主变容量达82万kVA，雅安水电资源丰富，综合电价约0.5元/度。工业用水由区供水总厂提供，日产量6万立方，价格2元/吨。工业用气由川西北气矿直供，约3.05元/m³。已建成日处理5000m³污水处理厂1座、240m³污水处理站1座。</p>
+        </div>
+        <div class="feat">
+            <div class="feat-icon">🏭</div>
+            <h4>产业集聚成型</h4>
+            <p>181家企业集聚发展，形成装备制造、有色金属延压加工、塑料橡胶制品三大主导集群，配套家具制造、非金属矿物制品等行业。配备标准化厂房、仓储物流中心和产业孵化器，提供全生命周期配套服务。</p>
+        </div>
+        <div class="feat">
+            <div class="feat-icon">🏆</div>
+            <h4>政策红利高地</h4>
+            <p>同时享受西部大开发、成渝双城经济圈、川藏经济协作试验区、成都都市圈等多重国家战略。工业用地基础价约9万元/亩，采用弹性年限出让，在税收、人才、厂房等方面均有专项扶持，投资性价比突出。</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ==================== 生产要素成本 ==================== -->
+<div class="wrap" id="s-cost">
+    <div class="sec-title">
+        <h3>生产要素成本参考</h3>
+        <div class="en">UTILITY & COST REFERENCE</div>
+        <div class="bar"></div>
+    </div>
+    <div class="cost-grid">
+        <div class="cost">
+            <h5>⚡ 工业用电</h5>
+            <div class="price">≈0.50 <small>元/度</small></div>
+            <div class="desc">110KV+220KV变电站各1座，主变容量82万kVA。雅安水电资源丰富，清洁能源价格优势显著</div>
+            <div class="tag">较成都低约15%-20%</div>
+        </div>
+        <div class="cost">
+            <h5>💧 工业用水</h5>
+            <div class="price">≈2.00 <small>元/吨</small></div>
+            <div class="desc">区供水总厂直供，日产量6万立方，水源充沛。配套日处理5000m³污水处理厂</div>
+            <div class="tag">较沿海城市低约40%-50%</div>
+        </div>
+        <div class="cost">
+            <h5>🔥 工业天然气</h5>
+            <div class="price">≈3.05 <small>元/m³</small></div>
+            <div class="desc">川西北气矿管道直供园区，气源稳定、价格可控，满足各类工业用气需求</div>
+            <div class="tag">较东部地区低约30%-40%</div>
+        </div>
+        <div class="cost">
+            <h5>🏗 工业用地</h5>
+            <div class="price">≈9 <small>万元/亩</small></div>
+            <div class="desc">可使用工业用地约2940亩，地势平整集中连片。采用弹性年限出让方式，重大项目一事一议</div>
+            <div class="tag">较成都周边低约60%-70%</div>
+        </div>
+        <div class="cost">
+            <h5>📡 通讯网络</h5>
+            <div class="price">全光网<small>覆盖</small></div>
+            <div class="desc">5G信号全覆盖、光纤宽带全接入，三大运营商完备服务，满足智能制造需求</div>
+            <div class="tag">与成都同网同价</div>
+        </div>
+        <div class="cost">
+            <h5>🏠 标准化厂房</h5>
+            <div class="price">8-12 <small>元/m²/月</small></div>
+            <div class="desc">多规格标准化厂房，满足不同规模企业需求，新入驻企业可享前两年免租或补贴</div>
+            <div class="tag">前两年可免租或补贴</div>
+        </div>
+    </div>
+    <p style="text-align:center;margin-top:18px;font-size:11px;color:var(--txt3);letter-spacing:1px;">* 以上为参考价格，实际费用以园区管委会及相关部门最新公布为准</p>
+</div>
+
+<!-- ==================== 交通区位 ==================== -->
+<div style="background:var(--bg2)" id="s-transport">
+<div class="wrap">
+    <div class="sec-title">
+        <h3>交通区位</h3>
+        <div class="en">TRANSPORTATION & LOCATION</div>
+        <div class="bar"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <div class="feat" style="text-align:center;padding:28px 20px;">
+            <div style="font-size:28px;margin-bottom:12px;">🛣</div>
+            <h4 style="font-size:15px;margin-bottom:8px;">高速公路</h4>
+            <p style="font-size:13px;">南接成雅高速，连通成渝环线高速，至成都约1小时车程</p>
+        </div>
+        <div class="feat" style="text-align:center;padding:28px 20px;">
+            <div style="font-size:28px;margin-bottom:12px;">🚂</div>
+            <h4 style="font-size:15px;margin-bottom:8px;">铁路运输</h4>
+            <p style="font-size:13px;">紧邻成雅铁路站点，川藏铁路经过区域，具备大宗货运条件</p>
+        </div>
+        <div class="feat" style="text-align:center;padding:28px 20px;">
+            <div style="font-size:28px;margin-bottom:12px;">✈️</div>
+            <h4 style="font-size:15px;margin-bottom:8px;">航空辐射</h4>
+            <p style="font-size:13px;">距双流机场约100km、天府机场约130km，通达全国及国际航线</p>
+        </div>
+        <div class="feat" style="text-align:center;padding:28px 20px;">
+            <div style="font-size:28px;margin-bottom:12px;">🛤</div>
+            <h4 style="font-size:15px;margin-bottom:8px;">国道干线</h4>
+            <p style="font-size:13px;">北邻108国道，318国道穿园而过，衔接川滇藏三省公路网络</p>
+        </div>
+    </div>
+    <div class="transport-imgs">
+        <div class="transport-img-item">
+            <img src="park_transport.png" alt="黄金区位 立体交通">
+            <div class="img-caption">黄金区位 · 立体交通</div>
+        </div>
+        <div class="transport-img-item">
+            <img src="park_map.png" alt="成雅工业园区规划图">
+            <div class="img-caption">成雅工业园区 · 甘雅工业园区规划布局</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ==================== 雅安战略地理 ==================== -->
+<div class="wrap" id="s-geography">
+    <div class="sec-title">
+        <h3>立足雅安 · 战略地理优势</h3>
+        <div class="en">STRATEGIC GEOGRAPHY</div>
+        <div class="bar"></div>
+    </div>
+    <div class="geo">
+        <div>
+            <h4>川西咽喉 · 成渝向西开放新高地</h4>
+            <p>雅安位于四川盆地西缘，地处成都平原向青藏高原的过渡地带，素有"川西咽喉""康藏门户"之称。在"十五五"规划中，雅安锚定<strong style="color:var(--gold);">"三区两地一枢纽"</strong>战略定位——建设绿色产业创新发展区、川藏经济协作试验区、成都都市圈西向重要功能区，打造世界大熊猫文化旅游重要目的地及川西综合交通枢纽。</p>
+            <p>成雅工业园区规划范围已整体纳入川藏经济协作试验区百丈片区，国土空间总体规划获批，园区发展迎来重大战略机遇。</p>
+        </div>
+        <div class="geo-tags">
+            <div class="geo-tag"><div class="ico">🚂</div><h6>川藏铁路枢纽</h6><p>全线贯通后雅安将升级为面向西藏及南亚的前沿门户</p></div>
+            <div class="geo-tag"><div class="ico">🏔</div><h6>川藏经济协作试验区</h6><p>园区已整体纳入试验区百丈片区规划范围</p></div>
+            <div class="geo-tag"><div class="ico">🌉</div><h6>成都都市圈西向门户</h6><p>承接成都产业西向转移，实现同城化发展</p></div>
+            <div class="geo-tag"><div class="ico">🌿</div><h6>绿色发展先行市</h6><p>清洁能源丰富，为绿色制造提供天然优势</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 主导产业 ==================== -->
+<div style="background:var(--bg2)" id="s-industry">
+<div class="wrap">
+    <div class="sec-title">
+        <h3>主导产业</h3>
+        <div class="en">KEY INDUSTRIES</div>
+        <div class="bar"></div>
+    </div>
+    <div class="ind-grid">
+        <div class="ind">
+            <div class="ind-n">01</div>
+            <div><h4>装备制造</h4><p>集聚企业23家，涵盖汽车零配件、精密铸造、钢结构、智能制造等领域。承接成都装备制造业转移，形成上下游协同产业链。</p></div>
+        </div>
+        <div class="ind">
+            <div class="ind-n">02</div>
+            <div><h4>有色金属延压加工</h4><p>集聚企业10家，以铜加工、铝加工为核心，依托雅安矿产和清洁能源优势，发展高附加值金属材料深加工。</p></div>
+        </div>
+        <div class="ind">
+            <div class="ind-n">03</div>
+            <div><h4>塑料与橡胶制品</h4><p>集聚企业32家，涵盖包装膜、工业包装、新型塑料材料等，产业链条完整，配套能力强。</p></div>
+        </div>
+        <div class="ind">
+            <div class="ind-n">04</div>
+            <div><h4>低空经济</h4><p>依托四川省低空空域管理改革试点，规划低空经济产业园（874亩），发展无人机研发制造、通航服务及相关配套产业。</p></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ==================== 政策叠加 ==================== -->
+<div class="wrap" id="s-policy">
+    <div class="sec-title">
+        <h3>政策叠加优势与投资服务</h3>
+        <div class="en">POLICY ADVANTAGES & SERVICES</div>
+        <div class="bar"></div>
+    </div>
+    <div class="stack">
+        <span class="stack-tag">新时代西部大开发</span>
+        <span class="stack-tag">成渝地区双城经济圈</span>
+        <span class="stack-tag">四川省省级工业园区</span>
+        <span class="stack-tag">川藏经济协作试验区</span>
+        <span class="stack-tag">成都都市圈同城化发展</span>
+        <span class="stack-tag">国家战略腹地建设</span>
+        <span class="stack-tag">成都-雅安两市合作共建</span>
+    </div>
+    <div class="ptbl-wrap">
+        <table class="ptbl">
+            <thead><tr><th style="width:20%">政策类别</th><th>主要内容</th></tr></thead>
+            <tbody>
+                <tr><td><span class="ptag">战略叠加</span></td><td>同时享受西部大开发、成渝双城经济圈、川藏经济协作试验区、成都都市圈等多重国家战略政策红利，七重政策叠加效应全国罕见</td></tr>
+                <tr><td><span class="ptag">土地政策</span></td><td>工业用地基础价约9万元/亩，采用弹性年限出让；重大项目"一事一议"供地，支持先租后让等灵活方式</td></tr>
+                <tr><td><span class="ptag">税收优惠</span></td><td>西部大开发企业所得税15%优惠税率；增值税、所得税地方留成部分给予一定比例奖励扶持</td></tr>
+                <tr><td><span class="ptag">厂房支持</span></td><td>标准化厂房租赁，前两年免租或租金补贴；自建厂房重大项目给予建设补贴</td></tr>
+                <tr><td><span class="ptag">人才政策</span></td><td>高层次人才安家补贴、子女入学、医疗保障等专项服务；与四川农业大学等高校合作搭建产学研人才通道</td></tr>
+                <tr><td><span class="ptag">融资服务</span></td><td>园区产业发展基金，联合金融机构提供信贷支持；符合条件的企业给予贷款贴息和融资担保</td></tr>
+                <tr><td><span class="ptag">营商服务</span></td><td>"一站式"行政审批，项目落地全程代办帮办；"最多跑一次"改革，企业开办当日办结</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ==================== 入驻企业 ==================== -->
+<div style="background:var(--bg2)" id="s-enterprise">
+<div class="wrap">
+    <div class="sec-title">
+        <h3>入驻企业</h3>
+        <div class="en">SETTLED ENTERPRISES</div>
+        <div class="bar"></div>
+    </div>
+    <p style="text-align:center;font-size:13.5px;color:var(--txt2);margin-bottom:36px;letter-spacing:1px;">园区入驻企业181家，以下为"四上"规模企业（共40家）</p>
+    <div class="ent-grid">
+        <div class="ent-col">
+        <div class="ent-group">
+            <div class="ent-group-title">工业企业（23家）</div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川长河塑业有限公司</span><span class="ent-biz">包装膜</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川省蜀乡酒业有限公司</span><span class="ent-biz">酒业</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安万泰铝业有限公司</span><span class="ent-biz">铝加工</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安大黄河钢结构工程有限公司</span><span class="ent-biz">钢结构</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川伟裕铝业有限公司</span><span class="ent-biz">铝加工</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安新航精密铸造有限公司</span><span class="ent-biz">精密铸造</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安兴元新材料有限公司</span><span class="ent-biz">新材料</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川兴伟博家具有限责任公司</span><span class="ent-biz">家具制造</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川君益电气有限公司</span><span class="ent-biz">电气设备</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川赢信汇通智能制造股份公司</span><span class="ent-biz">汽车零配件</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川崇科建材有限责任公司</span><span class="ent-biz">建材</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安红树林新材料有限公司</span><span class="ent-biz">新材料</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安悦蓉泰铝业有限公司</span><span class="ent-biz">铝加工</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川蜀阳铝业有限公司</span><span class="ent-biz">铝加工</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川鑫家和新型材料有限公司</span><span class="ent-biz">新材料</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川明鸿成新材料有限公司</span><span class="ent-biz">新材料</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安优美特金属制品有限公司</span><span class="ent-biz">金属制品</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川鑫凯铭泰金属材料有限公司</span><span class="ent-biz">金属材料</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安市四维瀚海汽车零部件有限公司</span><span class="ent-biz">汽车零部件</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川聚信银丰实业有限公司</span><span class="ent-biz">实业</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川西南铜业有限公司</span><span class="ent-biz">铜加工</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川苌弘铝业有限公司</span><span class="ent-biz">铝加工</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川蜀赛美新材料有限公司</span><span class="ent-biz">新材料</span></div>
+        </div>
+        </div>
+        <div class="ent-col">
+        <div class="ent-group">
+            <div class="ent-group-title">服务业企业（8家）</div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川天恒创智展览有限公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川天域博远展览有限公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川玖名展览展示有限公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川形睿展览展示有限公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川甘城展览有限公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川展多多会展服务有限公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川华广智展展览有限责任公司</span><span class="ent-biz">会展</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安清新环境科技有限公司</span><span class="ent-biz">环保科技</span></div>
+        </div>
+        <div class="ent-group">
+            <div class="ent-group-title">批发零售企业（6家）</div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川雅泰新能科技有限公司</span><span class="ent-biz">批发</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川鑫鼎祥金属材料有限公司</span><span class="ent-biz">批发</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安赢创再生资源回收有限公司</span><span class="ent-biz">批发</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">赢信汇通（雅安）集团发展有限公司</span><span class="ent-biz">批发</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安市成雅新城商贸有限公司</span><span class="ent-biz">商贸</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川卓瑞铜业有限公司</span><span class="ent-biz">铜业贸易</span></div>
+        </div>
+        <div class="ent-group">
+            <div class="ent-group-title">建筑业企业（3家）</div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">雅安市成雅新城建筑工程有限公司</span><span class="ent-biz">建筑</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川蒙鼎建筑工程有限公司</span><span class="ent-biz">建筑</span></div>
+            <div class="ent-item"><span class="ent-dot"></span><span class="ent-name">四川金黄河建设工程有限公司</span><span class="ent-biz">建筑安装</span></div>
+        </div>
+        </div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:12px;color:var(--txt3);letter-spacing:1px;">* 以上为"四上"规模企业名单，园区另有141家规下企业</p>
+</div>
+</div>
+
+<!-- ==================== 领导关怀 ==================== -->
+<div class="wrap" id="s-news">
+    <div class="sec-title">
+        <h3>领导关怀与园区动态</h3>
+        <div class="en">LEADERSHIP & NEWS</div>
+        <div class="bar"></div>
+    </div>
+    <div class="news-grid">
+        <div class="news">
+            <div class="news-img">
+                <img src="https://imgpai.thepaper.cn/pphimage/20260515/77923c84-d62f-4277-b34d-b86a85216c59.jpg" alt="王晓晖来雅安调研" onerror="this.parentElement.innerHTML='<div class=ph><span class=pi>📰</span><span>四川省委书记王晓晖</span></div>'">
+            </div>
+            <div class="news-body">
+                <span class="news-date">2026年5月</span>
+                <h4>省委书记王晓晖来雅安调研：做强锂电等产业，构建现代化产业体系</h4>
+                <p>王晓晖深入雅安经开区中航工业川西机器公司察看生产线，走访雅化锂业勉励发展专精特新。在名山区百丈镇调研乡村振兴，强调因地制宜发展新质生产力。</p>
+                <a class="news-link" href="https://www.yaan.gov.cn/xinwen/show/50abd0d80cc41f799c6a532ce599aec5.html" target="_blank">查看详情 →</a>
+            </div>
+        </div>
+        <div class="news">
+            <div class="news-img">
+                <img src="https://res.yaan.gov.cn/UploadFiles/2026/03/02/cf53e742-3529-48c6-b2fc-a29473f68ab7.jpg" alt="廖文彬经开区高质量发展座谈会" onerror="this.parentElement.innerHTML='<div class=ph><span class=pi>📰</span><span>雅安市委书记廖文彬</span></div>'">
+            </div>
+            <div class="news-body">
+                <span class="news-date">2026年3月</span>
+                <h4>廖文彬主持召开雅安经开区高质量发展座谈会：走在前 求突破</h4>
+                <p>雅安市委书记廖文彬强调经开区要走在前、求突破，奋力开创高质量发展新局面。要求党员干部眼中有光、心里有梦，肩上有责、脚下有路，成为推动发展的中坚力量。</p>
+                <a class="news-link" href="https://www.yaan.gov.cn/xinwen/show/49d217db-306f-4a91-b388-31c9936f5b6b.html" target="_blank">查看详情 →</a>
+            </div>
+        </div>
+        <div class="news">
+            <div class="news-img">
+                <img src="https://www.scspc.gov.cn/dygz/202511/W020251124350106769698.jpg" alt="王雁飞率队赴成雅工业园区调研" onerror="this.parentElement.innerHTML='<div class=ph><span class=pi>📰</span><span>省人大调研组</span></div>'">
+            </div>
+            <div class="news-body">
+                <span class="news-date">2025年11月</span>
+                <h4>省人大副主任王雁飞率队赴成雅工业园区开展专题调研</h4>
+                <p>调研组先后到成雅工业园区、雅安经开区等地实地考察，重点关注"十五五"规划编制、川藏经济协作试验区建设，强调要把准功能定位和资源禀赋，发展新质生产力。</p>
+                <a class="news-link" href="https://www.scspc.gov.cn/dygz/202511/t20251124_49604.html" target="_blank">查看详情 →</a>
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;">
+        <a href="https://www.yaan.gov.cn/xinwen/list/42ece1f8-a9e2-47fb-a278-edfbbed14b42.html" target="_blank" style="color:var(--c3);font-size:13px;text-decoration:none;font-weight:500;">查看更多领导活动报道 →</a>
+    </div>
+</div>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta" id="s-contact">
+    <div class="cta-inner">
+        <h3>诚邀合作 · 共创未来</h3>
+        <p class="sub2">欢迎各界企业家莅临园区考察指导，共谋发展大计</p>
+        <div class="cta-box">
+            <div class="cta-l">园区名称</div><div class="cta-v">成雅工业园区</div>
+            <div class="cta-l">园区地址</div><div class="cta-v">四川省雅安市名山区百丈镇工业大道1号</div>
+            <div class="cta-l">联系方式</div><div class="cta-v">0835-3358-966</div>
+            <div class="cta-l">合作模式</div><div class="cta-v">独资 / 合资 / 合作开发 / 厂房租赁</div>
+        </div>
+        <br>
+        <a class="cta-map" href="https://uri.amap.com/marker?position=103.2813,30.1758&name=%E6%88%90%E9%9B%85%E5%B7%A5%E4%B8%9A%E5%9B%AD%E5%8C%BA&callnative=1&src=mypage" target="_blank">📍 在高德地图中查看园区位置</a>
+    </div>
+</section>
+
+<footer>
+    成雅工业园区管理委员会 &nbsp;·&nbsp; 四川省雅安市名山区百丈镇工业大道1号 &nbsp;·&nbsp; 0835-3358-966<br>
+    本资料仅供招商参考，最终政策以园区官方发布为准 &nbsp;·&nbsp; 2026年7月
+</footer>
+
+<script>
+(function(){
+    var nav = document.getElementById('topnav');
+    var links = nav.querySelectorAll('a:not(.topnav-brand)');
+    var sections = [];
+    links.forEach(function(a){
+        var id = a.getAttribute('href').replace('#','');
+        var el = document.getElementById(id);
+        if(el) sections.push({el:el, link:a});
+    });
+    function onScroll(){
+        var st = window.scrollY || document.documentElement.scrollTop;
+        nav.classList.toggle('show', st > 400);
+        var current = null;
+        for(var i = 0; i < sections.length; i++){
+            if(sections[i].el.getBoundingClientRect().top <= 80) current = sections[i];
+        }
+        links.forEach(function(a){ a.classList.remove('active'); });
+        if(current) current.link.classList.add('active');
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+})();
+</script>
+
+</body>
+</html>
